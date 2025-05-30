@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Search, Music, Globe, ChevronRight, ExternalLink } from "lucide-react"
+import { Search, Music, Globe, ChevronRight, ExternalLink, Camera } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -38,6 +38,20 @@ const projects = [
     gradient: "from-blue-500 to-cyan-500",
     bgColor: "bg-blue-50 dark:bg-blue-950/20",
     iconColor: "text-blue-600 dark:text-blue-400",
+  },
+  {
+    id: "ai-vision-studio",
+    title: "AI Vision Studio",
+    description:
+      "Real-time object identification powered by Gemini AI. Capture, upload, or stream live video for intelligent image analysis and Q&A.",
+    icon: Camera,
+    tags: ["Computer Vision", "Image Analysis", "Real-time", "AI"],
+    route: "/ai-vision-studio",
+    features: ["Real-time analysis", "Image Q&A", "Multi-mode capture"],
+    tech: ["React", "Gemini AI", "Webcam API", "Next.js"],
+    gradient: "from-green-500 to-emerald-500",
+    bgColor: "bg-green-50 dark:bg-green-950/20",
+    iconColor: "text-green-600 dark:text-green-400",
   },
 ]
 

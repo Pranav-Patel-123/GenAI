@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import axios from "axios"
-import { ArrowLeft, Search, Loader2, Globe, Youtube, Sparkles, ExternalLink } from "lucide-react"
+import { ArrowLeft, Search, Loader2, Globe, Youtube, Sparkles, ExternalLink } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -10,19 +10,22 @@ import { Badge } from "@/components/ui/badge"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import Link from "next/link"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { LoadingModal } from "@/components/loading-modal"
 
 export default function WebScrapingPage() {
-  const API_URL = process.env.NEXT_PUBLIC_WEB_SCRAPPING_BACKEND_URL
+  const API_URL = process.env.NEXT_PUBLIC_WEB_SCRAPPING_BACKEND_URL || "http://localhost:8000"
 
   const [query, setQuery] = useState("")
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState(null)
   const [error, setError] = useState("")
+  const [showLoadingModal, setShowLoadingModal] = useState(false)
 
   const handleSearch = async () => {
     setLoading(true)
     setError("")
     setResult(null)
+    setShowLoadingModal(true) // Show the modal
 
     try {
       const res = await axios.post(`${API_URL}/search`, { query })
@@ -35,6 +38,7 @@ export default function WebScrapingPage() {
       }
     } finally {
       setLoading(false)
+      setShowLoadingModal(false) // Hide the modal
     }
   }
 
@@ -243,6 +247,13 @@ export default function WebScrapingPage() {
             </CardContent>
           </Card>
         )}
+
+        {/* Loading Modal */}
+        <LoadingModal
+          isOpen={showLoadingModal}
+          onClose={() => setShowLoadingModal(false)}
+          projectName="Web Scraping Assistant"
+        />
       </main>
     </div>
   )

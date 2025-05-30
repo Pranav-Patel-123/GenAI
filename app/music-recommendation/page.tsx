@@ -12,9 +12,10 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Link from "next/link"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { LoadingModal } from "@/components/loading-modal"
 
 export default function MusicRecommendationPage() {
-  const API_URL = process.env.NEXT_PUBLIC_MUSIC_RECOMMENDATION_BACKEND_URL
+  const API_URL = process.env.NEXT_PUBLIC_MUSIC_RECOMMENDATION_BACKEND_URL || "http://localhost:8000"
 
   const [mode, setMode] = useState("song")
   const [songName, setSongName] = useState("")
@@ -23,12 +24,14 @@ export default function MusicRecommendationPage() {
   const [recommendations, setRecommendations] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
+  const [showLoadingModal, setShowLoadingModal] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError("")
     setRecommendations([])
     setLoading(true)
+    setShowLoadingModal(true) // Show the modal
 
     try {
       const payload =
@@ -42,6 +45,7 @@ export default function MusicRecommendationPage() {
       setError(err.response?.data?.detail || err.message || "Something went wrong")
     } finally {
       setLoading(false)
+      setShowLoadingModal(false) // Hide the modal
     }
   }
 
@@ -273,6 +277,13 @@ export default function MusicRecommendationPage() {
             </CardContent>
           </Card>
         )}
+
+        {/* Loading Modal */}
+        <LoadingModal
+          isOpen={showLoadingModal}
+          onClose={() => setShowLoadingModal(false)}
+          projectName="Music Recommendation System"
+        />
       </main>
     </div>
   )
