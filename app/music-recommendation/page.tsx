@@ -11,7 +11,7 @@ import { Badge } from "@/components/ui/badge"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Link from "next/link"
-import { ThemeToggle } from "@/components/theme-toggle"
+// import { ThemeToggle } from "@/components/theme-toggle"
 import { LoadingModal } from "@/components/loading-modal"
 
 export default function MusicRecommendationPage() {
@@ -66,7 +66,7 @@ export default function MusicRecommendationPage() {
               <h1 className="text-xl font-bold">Music Recommendations</h1>
             </div>
           </div>
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
         </div>
       </header>
 

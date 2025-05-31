@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
-import { ThemeToggle } from "@/components/theme-toggle"
+// import { ThemeToggle } from "@/components/theme-toggle"
 import Webcam from "react-webcam"
 import { LoadingModal } from "@/components/loading-modal"
 
@@ -197,7 +197,7 @@ export default function AIVisionStudioPage() {
               <h1 className="text-xl font-bold text-white">AI Vision Studio</h1>
             </div>
           </div>
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
         </div>
       </header>
 

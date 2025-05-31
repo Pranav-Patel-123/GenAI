@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import Link from "next/link"
-import { ThemeToggle } from "@/components/theme-toggle"
+// import { ThemeToggle } from "@/components/theme-toggle"
 import { LoadingModal } from "@/components/loading-modal"
 
 export default function WebScrapingPage() {
@@ -65,7 +65,7 @@ export default function WebScrapingPage() {
               <h1 className="text-xl font-bold text-white">Web Scraping Assistant</h1>
             </div>
           </div>
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
         </div>
       </header>
 
